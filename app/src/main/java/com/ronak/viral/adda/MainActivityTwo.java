@@ -18,6 +18,7 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.gson.Gson;
 import com.ronak.viral.adda.drawer.NavItem;
 import com.ronak.viral.adda.drawer.TabAdapter;
+import com.ronak.viral.adda.fragments.WebViewFragmentThree;
 import com.ronak.viral.adda.fragments.WebViewFragmentTwo;
 import com.ronak.viral.adda.helper.ConfigParserTwo;
 import com.ronak.viral.adda.helper.FunctionHelper;
@@ -108,7 +109,7 @@ public class MainActivityTwo extends AppCompatActivity {
             List<Tab> tabList = new ArrayList<>();
 
             List<String> stringsUrl = new ArrayList<>();
-            stringsUrl.add("https://www.facebook.com/TaylorSwift/");//http://www.mi.com/in/
+            stringsUrl.add("http://www.boxtv.com/");//http://www.mi.com/in/
 
             Tab tab = new Tab("website", null, stringsUrl);
             tabList.add(tab);
@@ -151,7 +152,7 @@ public class MainActivityTwo extends AppCompatActivity {
             @Override
             public void configLoaded(boolean facedException, List<ViralObject> viralObjectList) {
                 dialog.dismiss();
-//                JstForTestingPurpose(facedException, viralObjectList);
+                JstForTestingPurpose(facedException, viralObjectList);
                 if (!facedException) {
                     actions = new ArrayList<>();
                     for (int i = 0; i < viralObjectList.size(); i++) {

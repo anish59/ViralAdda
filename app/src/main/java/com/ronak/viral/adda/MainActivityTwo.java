@@ -25,6 +25,7 @@ import com.ronak.viral.adda.helper.FunctionHelper;
 import com.ronak.viral.adda.providers.fav.ui.FavFragment;
 import com.ronak.viral.adda.providers.yt.ui.YoutubeFragment;
 import com.ronak.viral.adda.util.Helper;
+import com.ronak.viral.adda.viralModels.DailyMotionData;
 import com.ronak.viral.adda.viralModels.Tab;
 import com.ronak.viral.adda.viralModels.ViralObject;
 
@@ -39,6 +40,7 @@ public class MainActivityTwo extends AppCompatActivity {
     List<NavItem> actions;
     private Context context;
     public static String FRAGMENT_DATA = "transaction_data";
+    public static String TAB_DATA = "TAB_DATA";
     private int scrollCount = 0;
 
 
@@ -111,14 +113,19 @@ public class MainActivityTwo extends AppCompatActivity {
             List<String> stringsUrl = new ArrayList<>();
             stringsUrl.add("http://www.boxtv.com/");//http://www.mi.com/in/
 
-            Tab tab = new Tab("website", null, stringsUrl);
+            List<DailyMotionData> dailyMotionDataList = new ArrayList<>();
+            dailyMotionDataList.add(new DailyMotionData("Bom Diggy", "x6eh1w6", "https://api.dailymotion.com/video/x6eh1w6?fields=thumbnail_medium_url,thumbnail_small_url,thumbnail_large_url"));
+            dailyMotionDataList.add(new DailyMotionData("Dil Chori", "x6ciyo0", "https://api.dailymotion.com/video/x6ciyo0?fields=thumbnail_medium_url,thumbnail_small_url,thumbnail_large_url"));
+            dailyMotionDataList.add(new DailyMotionData("FASHION Video Song", "x4tw94e", "https://api.dailymotion.com/video/x4tw94e?fields=thumbnail_medium_url,thumbnail_small_url,thumbnail_large_url"));
+
+            Tab tab = new Tab("website", null, stringsUrl, dailyMotionDataList);
             tabList.add(tab);
 
 
             ViralObject viralObject = new ViralObject("facebook", null, null, false, tabList);
             viralObjectList.add(viralObject);
         }
-        {
+       /* {
             List<Tab> tabList = new ArrayList<>();
 
             List<String> stringsUrl = new ArrayList<>();
@@ -130,9 +137,9 @@ public class MainActivityTwo extends AppCompatActivity {
 
             ViralObject viralObject = new ViralObject("Blog", null, null, false, tabList);
             viralObjectList.add(viralObject);
-        }
+        }*/
         String res = new Gson().toJson(viralObjectList);
-        Log.e("ViralObjList", res);
+        Log.e("ViralObjListRES", res);
 
     }
 
@@ -152,6 +159,7 @@ public class MainActivityTwo extends AppCompatActivity {
             @Override
             public void configLoaded(boolean facedException, List<ViralObject> viralObjectList) {
                 dialog.dismiss();
+                Log.e("viralObjectsList", "" + new Gson().toJson(viralObjectList));
                 JstForTestingPurpose(facedException, viralObjectList);
                 if (!facedException) {
                     actions = new ArrayList<>();
@@ -159,9 +167,11 @@ public class MainActivityTwo extends AppCompatActivity {
                         List<Tab> tabsItem = viralObjectList.get(i).getTabs();
                         for (int j = 0; j < tabsItem.size(); j++) {
                             if (tabsItem.get(j).getTitle().equalsIgnoreCase("Youtube")) {
-                                actions.add(new NavItem(viralObjectList.get(i).getTitle(), YoutubeFragment.class, tabsItem.get(j).getArguments().toArray(new String[0])));
+                                actions.add(new NavItem(viralObjectList.get(i).getTitle(), YoutubeFragment.class
+                                        , tabsItem.get(j).getArguments().toArray(new String[0]), tabsItem.get(j)));
                             } else if (tabsItem.get(j).getTitle().equalsIgnoreCase("website")) {
-                                actions.add(new NavItem(viralObjectList.get(i).getTitle(), WebViewFragmentTwo.class, tabsItem.get(j).getArguments().toArray(new String[0])));
+                                actions.add(new NavItem(viralObjectList.get(i).getTitle(), WebViewFragmentTwo.class
+                                        , tabsItem.get(j).getArguments().toArray(new String[0]), tabsItem.get(j)));
                             }
                         }
                     }

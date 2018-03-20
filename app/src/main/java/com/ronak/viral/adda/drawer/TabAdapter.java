@@ -79,6 +79,7 @@ public class TabAdapter extends FragmentStatePagerAdapter {
 
             Bundle args = new Bundle();
             args.putStringArray(MainActivityTwo.FRAGMENT_DATA, action.getData()); //Todo: here you have to pass the url
+            args.putSerializable(MainActivityTwo.TAB_DATA, action.getTab());
 
             fragment.setArguments(args);
 

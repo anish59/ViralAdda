@@ -228,7 +228,7 @@ public class ConfigParser extends AsyncTask<Void, Void, Void> {
             list.add(args.getString(i));
         }
 
-        NavItem item = new NavItem(tabTitle, tabClass, list.toArray(new String[0])); //todo: 1
+        NavItem item = new NavItem(tabTitle, tabClass, list.toArray(new String[0]),null);
 
         //Add the image if present
         if (jsonTab.has("image")

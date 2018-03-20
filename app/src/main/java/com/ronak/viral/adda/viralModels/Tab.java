@@ -1,11 +1,21 @@
 package com.ronak.viral.adda.viralModels;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Tab {
+public class Tab implements Serializable{
     public String title;
     public String provider;
     public List<String> arguments;
+    public List<DailyMotionData> dailyMotionData;
+
+
+    public Tab(String title, String provider, List<String> arguments, List<DailyMotionData> dailyMotionData) {
+        this.title = title;
+        this.provider = provider;
+        this.arguments = arguments;
+        this.dailyMotionData = dailyMotionData;
+    }
 
     public Tab(String title, String provider, List<String> arguments) {
         this.title = title;
@@ -35,5 +45,13 @@ public class Tab {
 
     public void setArguments(List<String> arguments) {
         this.arguments = arguments;
+    }
+
+    public List<DailyMotionData> getDailyMotionData() {
+        return dailyMotionData;
+    }
+
+    public void setDailyMotionData(List<DailyMotionData> dailyMotionData) {
+        this.dailyMotionData = dailyMotionData;
     }
 }

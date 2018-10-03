@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Moviezz Adda</string>
+    <string name="app_name">Movies Adda</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -32,10 +32,10 @@
 
     <!-- About text, you can use basic html, stay between [ and ] -->
     <string name="about_text"><![CDATA[   
-    <b>Karthik M</b>
+    <b>Ronak Patel</b>
     <br><br>Thank you for downloading My App<br><br>
-    <br><br>WhatsApp: 9494435308<br><br>
-    <i>By www.androidmkab.com</i>
+    <br><br>WhatsApp: 9925168629<br><br>
+    <i>By</i>
     ]]></string>s
 
     <!-- Enter your Google Play billing details to enable In-App purchases -->
@@ -43,10 +43,10 @@
     <string name="product_id"></string>
 
     <!-- Enter a ADMOB ID if you would like to display ads-->
-    <string name="admob_banner_id">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="ad_unit_id">ca-app-pub-3940256099942544/2793859312</string>
+    <string name="admob_banner_id">ca-app-pub-8956945446354434/1804210262</string>
+    <string name="ad_unit_id">ca-app-pub-8956945446354434/8436473317</string>
     <string name="admob_interstitial_id"></string>
-    <string name="interstitial">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="interstitial">ca-app-pub-8956945446354434/7986475239</string>
 
     <!-- Strings for optional translation below this line -->
 
@@ -81,7 +81,7 @@
     <string name="video_subtitle_end">" by "</string>
 
     <!--  webview  -->
-    <string name="webview_title">Telugu TV Episodes</string>
+    <string name="webview_title"> TV Episodes</string>
 
     <string name="web_share_begin">"Look what I saw in the \""</string>
     <string name="web_share_end">"\"app: "</string>

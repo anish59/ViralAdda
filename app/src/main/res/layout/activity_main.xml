@@ -24,6 +24,7 @@
             <include
                 layout="@layout/toolbar_tabbar" />
 
+
             <include layout="@layout/activity_main_content" />
 
         </android.support.design.widget.CoordinatorLayout>

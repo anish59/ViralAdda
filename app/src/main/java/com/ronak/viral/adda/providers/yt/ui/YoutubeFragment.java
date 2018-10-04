@@ -252,9 +252,11 @@ public class YoutubeFragment extends Fragment {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 searchQuery = query;
-                currentType = TYPE_SEARCH;
-                loadVideos(null);
-                searchView.clearFocus();
+                /*currentType = TYPE_SEARCH;
+                loadVideos(null);*/
+
+                videoAdapter.getFilter().filter(searchQuery);
+                searchView.clearFocus(); //todo: search query
                 return true;
             }
 
@@ -262,6 +264,7 @@ public class YoutubeFragment extends Fragment {
             public boolean onQueryTextChange(String newText) {
                 return false;
             }
+
 
         });
 
@@ -276,6 +279,7 @@ public class YoutubeFragment extends Fragment {
                     searchQuery = null;
                     loadVideos(null);
                 }
+                videoAdapter.setOriginal_videos(videoList);
             }
 
             @Override
@@ -284,6 +288,13 @@ public class YoutubeFragment extends Fragment {
             }
         });
 
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                videoAdapter.setOriginal_videos(videoList);
+                return true;
+            }
+        });
 
         if (parts.length == 2) {
             menu.add("search")

@@ -2,12 +2,17 @@ package com.ronak.viral.adda.fragments;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
@@ -27,6 +32,7 @@ public class WebViewFragmentTwo extends Fragment {
     private WebView webView;
     private android.support.v4.widget.SwipeRefreshLayout refreshlayout;
     private String[] webUrls;
+    String browseUrl = "";
 
     @Nullable
     @Override
@@ -34,6 +40,7 @@ public class WebViewFragmentTwo extends Fragment {
         View view = inflater.inflate(R.layout.fragment_webview, container, false);
         this.refreshlayout = view.findViewById(R.id.refreshlayout);
         this.webView = view.findViewById(R.id.webView);
+        setHasOptionsMenu(true);
         return view;
     }
 
@@ -86,4 +93,26 @@ public class WebViewFragmentTwo extends Fragment {
 
     }
 
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        browseUrl = getArguments().getString(MainActivityTwo.INTENT_BROWSER_URL);
+        if (browseUrl != null && !browseUrl.isEmpty()) {
+            inflater.inflate(R.menu.menu_website, menu);
+        }
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.actionOpenWeb:
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(getActivity(), Uri.parse(browseUrl));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

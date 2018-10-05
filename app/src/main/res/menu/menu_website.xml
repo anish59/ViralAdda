@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:universal="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/actionOpenWeb"
+        android:icon="@drawable/icon_web"
+        android:iconTint="@color/white"
+        android:title="open"
+        universal:showAsAction="ifRoom" />
+
+
+</menu>

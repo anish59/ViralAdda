@@ -38,6 +38,7 @@ public class MainActivityTwo extends AppCompatActivity {
     List<NavItem> actions;
     private Context context;
     public static String FRAGMENT_DATA = "transaction_data";
+    public static String INTENT_BROWSER_URL = "INTENT_BROWSER_URL";
     private int scrollCount = 0;
 
 
@@ -114,7 +115,7 @@ public class MainActivityTwo extends AppCompatActivity {
             tabList.add(tab);
 
 
-            ViralObject viralObject = new ViralObject("facebook", null, null, false, tabList);
+            ViralObject viralObject = new ViralObject("facebook", null, "https://www.androidhive.info/2016/05/android-working-with-retrofit-http-library/", false, tabList);
             viralObjectList.add(viralObject);
         }
         {
@@ -127,7 +128,7 @@ public class MainActivityTwo extends AppCompatActivity {
             tabList.add(tab);
 
 
-            ViralObject viralObject = new ViralObject("Blog", null, null, false, tabList);
+            ViralObject viralObject = new ViralObject("Blog", null, "https://www.androidhive.info/2016/05/android-working-with-retrofit-http-library/", false, tabList);
             viralObjectList.add(viralObject);
         }
         String res = new Gson().toJson(viralObjectList);
@@ -151,8 +152,10 @@ public class MainActivityTwo extends AppCompatActivity {
             @Override
             public void configLoaded(boolean facedException, List<ViralObject> viralObjectList) {
                 dialog.dismiss();
-//                JstForTestingPurpose(facedException, viralObjectList);
+                JstForTestingPurpose(facedException, viralObjectList);
                 if (!facedException) {
+                    String res = new Gson().toJson(viralObjectList);
+
                     actions = new ArrayList<>();
                     for (int i = 0; i < viralObjectList.size(); i++) {
                         List<Tab> tabsItem = viralObjectList.get(i).getTabs();
@@ -160,7 +163,11 @@ public class MainActivityTwo extends AppCompatActivity {
                             if (tabsItem.get(j).getTitle().equalsIgnoreCase("Youtube")) {
                                 actions.add(new NavItem(viralObjectList.get(i).getTitle(), YoutubeFragment.class, tabsItem.get(j).getArguments().toArray(new String[0])));
                             } else if (tabsItem.get(j).getTitle().equalsIgnoreCase("website")) {
-                                actions.add(new NavItem(viralObjectList.get(i).getTitle(), WebViewFragmentTwo.class, tabsItem.get(j).getArguments().toArray(new String[0])));
+                                if (viralObjectList.get(i).getSubmenu() != null && !viralObjectList.get(i).getSubmenu().isEmpty()) {
+                                    actions.add(new NavItem(viralObjectList.get(i).getTitle(), WebViewFragmentTwo.class, tabsItem.get(j).getArguments().toArray(new String[0]), viralObjectList.get(i).getSubmenu()));
+                                } else {
+                                    actions.add(new NavItem(viralObjectList.get(i).getTitle(), WebViewFragmentTwo.class, tabsItem.get(j).getArguments().toArray(new String[0])));
+                                }
                             }
                         }
                     }

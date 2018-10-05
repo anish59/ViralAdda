@@ -17,7 +17,7 @@
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <android.support.design.widget.FloatingActionButton
+  <!--  <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabWeb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,6 +28,6 @@
         android:layout_marginEnd="?actionBarSize"
         android:layout_marginRight="?actionBarSize"
         android:src="@drawable/ic_play_active"
-        android:tint="@color/white" />
+        android:tint="@color/white" />-->
 
 </RelativeLayout>

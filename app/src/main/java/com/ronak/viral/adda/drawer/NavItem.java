@@ -6,10 +6,11 @@ import android.support.v4.app.Fragment;
 import java.io.Serializable;
 
 public class NavItem implements Serializable {
-	
+
     private String mText;
     private int mTextResource;
     private String[] mData;
+    private String webUrlForIntent;
     private Class<? extends Fragment> mFragment;
 
     public String categoryImageUrl;
@@ -27,6 +28,13 @@ public class NavItem implements Serializable {
         mData = data;
     }
 
+    public NavItem(String text, Class<? extends Fragment> fragment, String[] data,String webUrlForIntent) {
+        mText = text;
+        mFragment = fragment;
+        this.webUrlForIntent=webUrlForIntent;
+        mData = data;
+    }
+
     public String getText(Context c) {
         if (mText != null) {
             return mText;
@@ -34,16 +42,24 @@ public class NavItem implements Serializable {
             return c.getResources().getString(mTextResource);
         }
     }
-    
+
     public Class<? extends Fragment> getFragment() {
-    	return mFragment;
-    }
-    
-    public String[] getData() {
-    	return mData;
+        return mFragment;
     }
 
-    public void setCategoryImageUrl(String url){
+    public String[] getData() {
+        return mData;
+    }
+
+    public void setCategoryImageUrl(String url) {
         this.categoryImageUrl = url;
+    }
+
+    public String getWebUrlForIntent() {
+        return webUrlForIntent;
+    }
+
+    public void setWebUrlForIntent(String webUrlForIntent) {
+        this.webUrlForIntent = webUrlForIntent;
     }
 }

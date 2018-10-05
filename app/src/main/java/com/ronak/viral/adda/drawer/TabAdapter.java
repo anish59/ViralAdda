@@ -20,7 +20,7 @@ import java.util.List;
  * file in the root of this project
  *
  * @author Karthik
- *         Copyright 2017
+ * Copyright 2017
  */
 public class TabAdapter extends FragmentStatePagerAdapter {
 
@@ -79,7 +79,7 @@ public class TabAdapter extends FragmentStatePagerAdapter {
 
             Bundle args = new Bundle();
             args.putStringArray(MainActivityTwo.FRAGMENT_DATA, action.getData()); //Todo: here you have to pass the url
-
+            args.putString(MainActivityTwo.INTENT_BROWSER_URL, action.getWebUrlForIntent());
             fragment.setArguments(args);
 
             return fragment;

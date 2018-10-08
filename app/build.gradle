@@ -59,6 +59,7 @@ dependencies {
     compile 'com.android.support:design:27.1.0'
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.android.support:customtabs:27.1.1'
+//    compile 'com.cpiz.bubbleview:bubbleview:1.0.3'
 
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

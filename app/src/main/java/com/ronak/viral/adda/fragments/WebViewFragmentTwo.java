@@ -20,6 +20,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.cpiz.android.bubbleview.BubbleTextView;
 import com.ronak.viral.adda.MainActivityTwo;
 import com.ronak.viral.adda.R;
 import com.ronak.viral.adda.helper.FunctionHelper;
@@ -33,11 +34,13 @@ public class WebViewFragmentTwo extends Fragment {
     private android.support.v4.widget.SwipeRefreshLayout refreshlayout;
     private String[] webUrls;
     String browseUrl = "";
+    private com.cpiz.android.bubbleview.BubbleTextView hintTextView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_webview, container, false);
+        this.hintTextView = (BubbleTextView) view.findViewById(R.id.hintTextView);
         this.refreshlayout = view.findViewById(R.id.refreshlayout);
         this.webView = view.findViewById(R.id.webView);
         setHasOptionsMenu(true);
@@ -88,6 +91,28 @@ public class WebViewFragmentTwo extends Fragment {
                 if (webUrls != null && webUrls.length != 0) {
                     webView.loadUrl(webUrls[0]);
                 }
+            }
+        });
+
+
+        browseUrl = getArguments().getString(MainActivityTwo.INTENT_BROWSER_URL);
+
+
+        if (browseUrl != null && !browseUrl.isEmpty()) {
+            hintTextView.setVisibility(View.VISIBLE);
+
+
+        } else {
+            hintTextView.setVisibility(View.GONE);
+
+        }
+
+        hintTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(getActivity(), Uri.parse(browseUrl));
             }
         });
 

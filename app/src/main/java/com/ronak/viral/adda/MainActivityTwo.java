@@ -152,7 +152,7 @@ public class MainActivityTwo extends AppCompatActivity {
             @Override
             public void configLoaded(boolean facedException, List<ViralObject> viralObjectList) {
                 dialog.dismiss();
-                JstForTestingPurpose(facedException, viralObjectList);
+//                JstForTestingPurpose(facedException, viralObjectList);
                 if (!facedException) {
                     String res = new Gson().toJson(viralObjectList);
 

@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.cpiz.android.bubbleview.BubbleTextView;
 import com.ronak.viral.adda.MainActivityTwo;
 import com.ronak.viral.adda.R;
+import com.ronak.viral.adda.helper.AdvancedSpannableString;
 import com.ronak.viral.adda.helper.FunctionHelper;
 
 /**
@@ -44,6 +45,13 @@ public class WebViewFragmentTwo extends Fragment {
         this.refreshlayout = view.findViewById(R.id.refreshlayout);
         this.webView = view.findViewById(R.id.webView);
         setHasOptionsMenu(true);
+
+
+        AdvancedSpannableString ass = new AdvancedSpannableString(hintTextView.getText());
+        ass.setUnderLine("Click here");
+        ass.setColor(getActivity().getResources().getColor(R.color.myPrimaryDarkColor), "Click here");
+
+        hintTextView.setText(ass);
         return view;
     }
 
